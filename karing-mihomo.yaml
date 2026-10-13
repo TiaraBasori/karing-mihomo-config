@@ -1,0 +1,1270 @@
+# ============================================================
+#  Clash Meta (mihomo) 规则配置【远程引用版 v2】— KaringX/karing-ruleset
+#  171 个规则碎片按需编排 + MetaCubeX geosite/geoip, 规则集每日自动更新
+#  策略组: 地区组(🇭🇰🇹🇼🇯🇵🇸🇬🇺🇸🇷🇺+其他, 匹配中英文名/旗帜) + 30 个规则分流组
+#  使用: 将 proxy-providers.nodes.url 改为你的订阅链接
+# ============================================================
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: true
+unified-delay: true
+tcp-concurrent: true
+find-process-mode: strict
+geodata-mode: true
+geo-auto-update: true
+geo-update-interval: 168
+geox-url:
+  geoip: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
+  asn: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb"
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+dns:
+  enable: true
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "*.lan"
+    - "*.local"
+    - "+.msftconnecttest.com"
+    - "+.msftncsi.com"
+  nameserver:
+    - https://223.5.5.5/dns-query
+    - https://doh.pub/dns-query
+  fallback:
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+
+proxy-providers:
+  nodes:
+    type: http
+    url: "PUT-YOUR-SUBSCRIPTION-URL-HERE"
+    path: ./providers/nodes.yaml
+    interval: 3600
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+
+proxy-groups:
+  - name: "🇭🇰 香港"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇭🇰|HK|Hong ?Kong|香港|深港|沪港|京港|港"
+    use:
+      - nodes
+  - name: "🇹🇼 台湾"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇹🇼|TW|Taiwan|新北|彰化|CHT|台湾|臺灣"
+    use:
+      - nodes
+  - name: "🇯🇵 日本"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇯🇵|JP|Japan|东京|大阪|埼玉|日本|川日|东京|大阪|泉日|埼玉"
+    use:
+      - nodes
+  - name: "🇸🇬 新加坡"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇸🇬|SG|Singapore|新加坡|狮城|坡"
+    use:
+      - nodes
+  - name: "🇺🇸 美国"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇺🇸|US|United States|America|美国|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥"
+    use:
+      - nodes
+  - name: "🇷🇺 俄罗斯"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇷🇺|RU|Russia|俄罗斯|莫斯科|圣彼得堡"
+    use:
+      - nodes
+  - name: "🇰🇷 韩国"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇰🇷|韩国"
+    use:
+      - nodes
+  - name: "🇰🇵 朝鲜"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇰🇵|朝鲜"
+    use:
+      - nodes
+  - name: "🇲🇾 马来西亚"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇲🇾|马来西亚"
+    use:
+      - nodes
+  - name: "🇹🇭 泰国"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇹🇭|泰国"
+    use:
+      - nodes
+  - name: "🇻🇳 越南"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇻🇳|越南"
+    use:
+      - nodes
+  - name: "🇵🇭 菲律宾"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇵🇭|菲律宾"
+    use:
+      - nodes
+  - name: "🇮🇩 印度尼西亚"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇮🇩|印度尼西亚"
+    use:
+      - nodes
+  - name: "🇮🇳 印度"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇮🇳|印度"
+    use:
+      - nodes
+  - name: "🇦🇪 阿联酋"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇦🇪|阿联酋"
+    use:
+      - nodes
+  - name: "🇸🇦 沙特阿拉伯"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇸🇦|沙特阿拉伯"
+    use:
+      - nodes
+  - name: "🇹🇷 土耳其"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇹🇷|土耳其"
+    use:
+      - nodes
+  - name: "🇬🇧 英国"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇬🇧|英国"
+    use:
+      - nodes
+  - name: "🇫🇷 法国"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇫🇷|法国"
+    use:
+      - nodes
+  - name: "🇩🇪 德国"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇩🇪|德国"
+    use:
+      - nodes
+  - name: "🇳🇱 荷兰"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇳🇱|荷兰"
+    use:
+      - nodes
+  - name: "🇪🇸 西班牙"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇪🇸|西班牙"
+    use:
+      - nodes
+  - name: "🇮🇹 意大利"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇮🇹|意大利"
+    use:
+      - nodes
+  - name: "🇨🇦 加拿大"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇨🇦|加拿大"
+    use:
+      - nodes
+  - name: "🇧🇷 巴西"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇧🇷|巴西"
+    use:
+      - nodes
+  - name: "🇦🇷 阿根廷"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇦🇷|阿根廷"
+    use:
+      - nodes
+  - name: "🇦🇺 澳大利亚"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇦🇺|澳大利亚"
+    use:
+      - nodes
+  - name: "🇳🇿 新西兰"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇳🇿|新西兰"
+    use:
+      - nodes
+  - name: "🌐 其他地区"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    exclude-filter: "(?i)🇭🇰|🇹🇼|🇯🇵|🇸🇬|🇺🇸|🇷🇺|HK|Hong ?Kong|香港|TW|Taiwan|台湾|臺灣|JP|Japan|日本|东京|大阪|SG|Singapore|新加坡|狮城|US|United States|America|美国|波特兰|达拉斯|硅谷|洛杉矶|圣何塞|西雅图|芝加哥|RU|Russia|俄罗斯|莫斯科"
+    use:
+      - nodes
+  - name: "🚀 节点选择"
+    type: select
+    proxies:
+      - "♻️ 自动选择"
+      - "🇭🇰 香港"
+      - "🇹🇼 台湾"
+      - "🇯🇵 日本"
+      - "🇸🇬 新加坡"
+      - "🇺🇸 美国"
+      - "🇷🇺 俄罗斯"
+      - "🇰🇷 韩国"
+      - "🇰🇵 朝鲜"
+      - "🇲🇾 马来西亚"
+      - "🇹🇭 泰国"
+      - "🇻🇳 越南"
+      - "🇵🇭 菲律宾"
+      - "🇮🇩 印度尼西亚"
+      - "🇮🇳 印度"
+      - "🇦🇪 阿联酋"
+      - "🇸🇦 沙特阿拉伯"
+      - "🇹🇷 土耳其"
+      - "🇬🇧 英国"
+      - "🇫🇷 法国"
+      - "🇩🇪 德国"
+      - "🇳🇱 荷兰"
+      - "🇪🇸 西班牙"
+      - "🇮🇹 意大利"
+      - "🇨🇦 加拿大"
+      - "🇧🇷 巴西"
+      - "🇦🇷 阿根廷"
+      - "🇦🇺 澳大利亚"
+      - "🇳🇿 新西兰"
+      - "🌐 其他地区"
+    use:
+      - nodes
+  - name: "♻️ 自动选择"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    use:
+      - nodes
+  - name: "🎯 全球直连"
+    type: select
+    proxies:
+      - DIRECT
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "🛑 广告拦截"
+    type: select
+    proxies:
+      - "REJECT"
+      - "DIRECT"
+    use:
+      - nodes
+  - name: "🧹 应用净化"
+    type: select
+    proxies:
+      - "REJECT"
+      - "DIRECT"
+    use:
+      - nodes
+  - name: "☠️ 恶意软件"
+    type: select
+    proxies:
+      - "REJECT"
+      - "DIRECT"
+    use:
+      - nodes
+  - name: "📲 电报消息"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "💬 OpenAI"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "🤖 Google Gemini"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "🔎 Google"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "▶️ Google Play"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "📢 Google FCM"
+    type: select
+    proxies:
+      - "DIRECT"
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "🍎 苹果服务"
+    type: select
+    proxies:
+      - "🎯 全球直连"
+    use:
+      - nodes
+  - name: "🍎 苹果推送"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+      - "🎯 全球直连"
+    use:
+      - nodes
+  - name: "🎧 Spotify"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "🚫 Spotify Ads"
+    type: select
+    proxies:
+      - "REJECT"
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "📹 油管视频"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "🦋 Facebook"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "❌ X"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "🎵 TikTok"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "📸 Instagram"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "🎥 奈飞视频"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "💬 WhatsApp"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "✈️ Claude"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "🐱 GitHub"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "Ⓜ️ 微软Bing"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "Ⓜ️ 微软云盘"
+    type: select
+    proxies:
+      - "🎯 全球直连"
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "Ⓜ️ 微软服务"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+      - "🎯 全球直连"
+    use:
+      - nodes
+  - name: "🎮 游戏平台"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+      - "🎯 全球直连"
+    use:
+      - nodes
+  - name: "📺 哔哩哔哩"
+    type: select
+    proxies:
+      - "🎯 全球直连"
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "🎶 网易音乐"
+    type: select
+    proxies:
+      - "🎯 全球直连"
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "🌏 国外穿墙"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+    use:
+      - nodes
+  - name: "🐟 漏网之鱼"
+    type: select
+    proxies:
+      - "🚀 节点选择"
+      - "🎯 全球直连"
+    use:
+      - nodes
+
+rule-providers:
+  Apple:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Apple.list"
+    path: ./ruleset/Apple.list
+    interval: 86400
+  AppleNews:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/AppleNews.list"
+    path: ./ruleset/AppleNews.list
+    interval: 86400
+  AppleTV:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/AppleTV.list"
+    path: ./ruleset/AppleTV.list
+    interval: 86400
+  BanAD:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list"
+    path: ./ruleset/BanAD.list
+    interval: 86400
+  BanEasyList:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanEasyList.list"
+    path: ./ruleset/BanEasyList.list
+    interval: 86400
+  BanEasyListChina:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanEasyListChina.list"
+    path: ./ruleset/BanEasyListChina.list
+    interval: 86400
+  BanEasyPrivacy:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanEasyPrivacy.list"
+    path: ./ruleset/BanEasyPrivacy.list
+    interval: 86400
+  BanProgramAD:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list"
+    path: ./ruleset/BanProgramAD.list
+    interval: 86400
+  Bilibili:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Bilibili.list"
+    path: ./ruleset/Bilibili.list
+    interval: 86400
+  BilibiliHMT:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/BilibiliHMT.list"
+    path: ./ruleset/BilibiliHMT.list
+    interval: 86400
+  Bing:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Bing.list"
+    path: ./ruleset/Bing.list
+    interval: 86400
+  Blizzard:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Blizzard.list"
+    path: ./ruleset/Blizzard.list
+    interval: 86400
+  CN:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/CN.list"
+    path: ./ruleset/CN.list
+    interval: 86400
+  ChinaCompanyIp:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaCompanyIp.list"
+    path: ./ruleset/ChinaCompanyIp.list
+    interval: 86400
+  ChinaDomain:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaDomain.list"
+    path: ./ruleset/ChinaDomain.list
+    interval: 86400
+  ChinaIp:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaIp.list"
+    path: ./ruleset/ChinaIp.list
+    interval: 86400
+  ChinaIpV6:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaIpV6.list"
+    path: ./ruleset/ChinaIpV6.list
+    interval: 86400
+  Claude:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Claude.list"
+    path: ./ruleset/Claude.list
+    interval: 86400
+  ClaudeAI:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/ClaudeAI.list"
+    path: ./ruleset/ClaudeAI.list
+    interval: 86400
+  DisneyPlus:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/DisneyPlus.list"
+    path: ./ruleset/DisneyPlus.list
+    interval: 86400
+  Epic:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Epic.list"
+    path: ./ruleset/Epic.list
+    interval: 86400
+  Gemini:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Gemini.list"
+    path: ./ruleset/Gemini.list
+    interval: 86400
+  Github:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Github.list"
+    path: ./ruleset/Github.list
+    interval: 86400
+  Google:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Google.list"
+    path: ./ruleset/Google.list
+    interval: 86400
+  GoogleCN:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/GoogleCN.list"
+    path: ./ruleset/GoogleCN.list
+    interval: 86400
+  GoogleCNProxyIP:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/GoogleCNProxyIP.list"
+    path: ./ruleset/GoogleCNProxyIP.list
+    interval: 86400
+  GoogleFCM:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/GoogleFCM.list"
+    path: ./ruleset/GoogleFCM.list
+    interval: 86400
+  HBO:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/HBO.list"
+    path: ./ruleset/HBO.list
+    interval: 86400
+  IqiyiHMT:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/IqiyiHMT.list"
+    path: ./ruleset/IqiyiHMT.list
+    interval: 86400
+  LocalAreaNetwork:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/LocalAreaNetwork.list"
+    path: ./ruleset/LocalAreaNetwork.list
+    interval: 86400
+  MIUIPrivacy:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/MIUIPrivacy.list"
+    path: ./ruleset/MIUIPrivacy.list
+    interval: 86400
+  Microsoft:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Microsoft.list"
+    path: ./ruleset/Microsoft.list
+    interval: 86400
+  NetEaseMusic:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/NetEaseMusic.list"
+    path: ./ruleset/NetEaseMusic.list
+    interval: 86400
+  Netflix:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Netflix.list"
+    path: ./ruleset/Netflix.list
+    interval: 86400
+  NetflixIP:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/NetflixIP.list"
+    path: ./ruleset/NetflixIP.list
+    interval: 86400
+  Nintendo:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Nintendo.list"
+    path: ./ruleset/Nintendo.list
+    interval: 86400
+  OneDrive:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/OneDrive.list"
+    path: ./ruleset/OneDrive.list
+    interval: 86400
+  OpenAi:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/OpenAi.list"
+    path: ./ruleset/OpenAi.list
+    interval: 86400
+  Origin:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Origin.list"
+    path: ./ruleset/Origin.list
+    interval: 86400
+  ProxyGFWlist:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/ProxyGFWlist.list"
+    path: ./ruleset/ProxyGFWlist.list
+    interval: 86400
+  ProxyLite:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyLite.list"
+    path: ./ruleset/ProxyLite.list
+    interval: 86400
+  ProxyMedia:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyMedia.list"
+    path: ./ruleset/ProxyMedia.list
+    interval: 86400
+  Sony:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Sony.list"
+    path: ./ruleset/Sony.list
+    interval: 86400
+  Spark:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Spark.list"
+    path: ./ruleset/Spark.list
+    interval: 86400
+  Spotify:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Spotify.list"
+    path: ./ruleset/Spotify.list
+    interval: 86400
+  Steam:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Steam.list"
+    path: ./ruleset/Steam.list
+    interval: 86400
+  SteamCN:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/SteamCN.list"
+    path: ./ruleset/SteamCN.list
+    interval: 86400
+  Telegram:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Telegram.list"
+    path: ./ruleset/Telegram.list
+    interval: 86400
+  TikTok:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/TikTok.list"
+    path: ./ruleset/TikTok.list
+    interval: 86400
+  Whatsapp:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Whatsapp.list"
+    path: ./ruleset/Whatsapp.list
+    interval: 86400
+  Xbox:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Xbox.list"
+    path: ./ruleset/Xbox.list
+    interval: 86400
+  YouTube:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/YouTube.list"
+    path: ./ruleset/YouTube.list
+    interval: 86400
+  YouTubeMusic:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/YouTubeMusic.list"
+    path: ./ruleset/YouTubeMusic.list
+    interval: 86400
+  GEOIP-cn:
+    type: http
+    format: mrs
+    behavior: ipcidr
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/cn.mrs"
+    path: ./ruleset/geoip-cn.mrs
+    interval: 86400
+  GEOIP-google:
+    type: http
+    format: mrs
+    behavior: ipcidr
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/google.mrs"
+    path: ./ruleset/geoip-google.mrs
+    interval: 86400
+  GEOIP-netflix:
+    type: http
+    format: mrs
+    behavior: ipcidr
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/netflix.mrs"
+    path: ./ruleset/geoip-netflix.mrs
+    interval: 86400
+  GEOIP-telegram:
+    type: http
+    format: mrs
+    behavior: ipcidr
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/telegram.mrs"
+    path: ./ruleset/geoip-telegram.mrs
+    interval: 86400
+  GEOSITE-anthropic:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/anthropic.mrs"
+    path: ./ruleset/geosite-anthropic.mrs
+    interval: 86400
+  GEOSITE-apple:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/apple.mrs"
+    path: ./ruleset/geosite-apple.mrs
+    interval: 86400
+  GEOSITE-apple-cn:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/apple-cn.mrs"
+    path: ./ruleset/geosite-apple-cn.mrs
+    interval: 86400
+  GEOSITE-apple-pki:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/apple-pki.mrs"
+    path: ./ruleset/geosite-apple-pki.mrs
+    interval: 86400
+  GEOSITE-bing:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/bing.mrs"
+    path: ./ruleset/geosite-bing.mrs
+    interval: 86400
+  GEOSITE-category-ads-all:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-ads-all.mrs"
+    path: ./ruleset/geosite-category-ads-all.mrs
+    interval: 86400
+  GEOSITE-category-games:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-games.mrs"
+    path: ./ruleset/geosite-category-games.mrs
+    interval: 86400
+  GEOSITE-facebook:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/facebook.mrs"
+    path: ./ruleset/geosite-facebook.mrs
+    interval: 86400
+  GEOSITE-geolocation-!cn:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-!cn.mrs"
+    path: ./ruleset/geosite-geolocation-!cn.mrs
+    interval: 86400
+  GEOSITE-geolocation-cn:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-cn.mrs"
+    path: ./ruleset/geosite-geolocation-cn.mrs
+    interval: 86400
+  GEOSITE-google:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.mrs"
+    path: ./ruleset/geosite-google.mrs
+    interval: 86400
+  GEOSITE-google-gemini:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google-gemini.mrs"
+    path: ./ruleset/geosite-google-gemini.mrs
+    interval: 86400
+  GEOSITE-google-play:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google-play.mrs"
+    path: ./ruleset/geosite-google-play.mrs
+    interval: 86400
+  GEOSITE-googlefcm:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/googlefcm.mrs"
+    path: ./ruleset/geosite-googlefcm.mrs
+    interval: 86400
+  GEOSITE-instagram:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/instagram.mrs"
+    path: ./ruleset/geosite-instagram.mrs
+    interval: 86400
+  GEOSITE-microsoft:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft.mrs"
+    path: ./ruleset/geosite-microsoft.mrs
+    interval: 86400
+  GEOSITE-microsoft-dev:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft-dev.mrs"
+    path: ./ruleset/geosite-microsoft-dev.mrs
+    interval: 86400
+  GEOSITE-microsoft-pki:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft-pki.mrs"
+    path: ./ruleset/geosite-microsoft-pki.mrs
+    interval: 86400
+  GEOSITE-onedrive:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/onedrive.mrs"
+    path: ./ruleset/geosite-onedrive.mrs
+    interval: 86400
+  GEOSITE-openai:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/openai.mrs"
+    path: ./ruleset/geosite-openai.mrs
+    interval: 86400
+  GEOSITE-spotify:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/spotify.mrs"
+    path: ./ruleset/geosite-spotify.mrs
+    interval: 86400
+  GEOSITE-spotify@ads:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/spotify@ads.mrs"
+    path: ./ruleset/geosite-spotify@ads.mrs
+    interval: 86400
+  GEOSITE-telegram:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.mrs"
+    path: ./ruleset/geosite-telegram.mrs
+    interval: 86400
+  GEOSITE-tiktok:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/tiktok.mrs"
+    path: ./ruleset/geosite-tiktok.mrs
+    interval: 86400
+  GEOSITE-tld-cn:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/tld-cn.mrs"
+    path: ./ruleset/geosite-tld-cn.mrs
+    interval: 86400
+  GEOSITE-twitter:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/twitter.mrs"
+    path: ./ruleset/geosite-twitter.mrs
+    interval: 86400
+  GEOSITE-whatsapp:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/whatsapp.mrs"
+    path: ./ruleset/geosite-whatsapp.mrs
+    interval: 86400
+  GEOSITE-x:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/x.mrs"
+    path: ./ruleset/geosite-x.mrs
+    interval: 86400
+  GEOSITE-youtube:
+    type: http
+    format: mrs
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/youtube.mrs"
+    path: ./ruleset/geosite-youtube.mrs
+    interval: 86400
+  Facebook:
+    type: http
+    format: text
+    behavior: classical
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Facebook.list"
+    path: ./ruleset/Facebook.list
+    interval: 86400
+  Instagram:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Instagram.list"
+    path: ./ruleset/Instagram.list
+    interval: 86400
+  Twitter:
+    type: http
+    format: text
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Twitter.list"
+    path: ./ruleset/Twitter.list
+    interval: 86400
+
+rules:
+  # ---- 冷启动引导: 规则集下载域名直连 ----
+  - DOMAIN-SUFFIX,jsdelivr.net,DIRECT
+  - DOMAIN-SUFFIX,githubusercontent.com,DIRECT
+  - DOMAIN,github.com,DIRECT
+  # ---- 局域网 ----
+  - RULE-SET,LocalAreaNetwork,DIRECT
+  # ---- 恶意软件/钓鱼 ----
+  # ---- Spotify Ads (必须先于 Spotify) ----
+  - RULE-SET,GEOSITE-spotify@ads,🚫 Spotify Ads
+  - RULE-SET,Spotify,🎧 Spotify
+  - RULE-SET,GEOSITE-spotify,🎧 Spotify
+  # ---- Telegram ----
+  - RULE-SET,Telegram,📲 电报消息
+  - RULE-SET,GEOSITE-telegram,📲 电报消息
+  - RULE-SET,GEOIP-telegram,📲 电报消息,no-resolve
+  # ---- OpenAI / Claude / Gemini ----
+  - RULE-SET,OpenAi,💬 OpenAI
+  - RULE-SET,GEOSITE-openai,💬 OpenAI
+  - RULE-SET,Claude,✈️ Claude
+  - RULE-SET,ClaudeAI,✈️ Claude
+  - RULE-SET,GEOSITE-anthropic,✈️ Claude
+  - RULE-SET,Gemini,🤖 Google Gemini
+  - RULE-SET,GEOSITE-google-gemini,🤖 Google Gemini
+  # ---- Google ----
+  - RULE-SET,Google,🔎 Google
+  - RULE-SET,GEOSITE-google,🔎 Google
+  - RULE-SET,GEOIP-google,🔎 Google,no-resolve
+  - RULE-SET,GEOSITE-google-play,▶️ Google Play
+  - RULE-SET,GoogleFCM,📢 Google FCM
+  - RULE-SET,GEOSITE-googlefcm,📢 Google FCM
+  - RULE-SET,GoogleCN,DIRECT
+  - RULE-SET,GoogleCNProxyIP,DIRECT,no-resolve
+  # ---- Apple ----
+  - RULE-SET,Apple,🍎 苹果服务
+  - RULE-SET,AppleTV,🍎 苹果服务
+  - RULE-SET,GEOSITE-apple-cn,🍎 苹果服务
+  - RULE-SET,GEOSITE-apple,🍎 苹果服务
+  - RULE-SET,GEOSITE-apple-pki,🍎 苹果服务
+  - RULE-SET,AppleNews,🍎 苹果推送
+  # ---- 广告拦截 / 应用净化 ----
+  - RULE-SET,BanAD,🛑 广告拦截
+  - RULE-SET,BanEasyListChina,🛑 广告拦截
+  - RULE-SET,BanEasyList,🛑 广告拦截
+  - RULE-SET,BanEasyPrivacy,🛑 广告拦截
+  - RULE-SET,BanProgramAD,🧹 应用净化
+  - RULE-SET,MIUIPrivacy,🧹 应用净化
+  - RULE-SET,Spark,🧹 应用净化
+  - RULE-SET,GEOSITE-category-ads-all,🛑 广告拦截
+  # ---- 视频/社交 ----
+  - RULE-SET,YouTube,📹 油管视频
+  - RULE-SET,YouTubeMusic,📹 油管视频
+  - RULE-SET,GEOSITE-youtube,📹 油管视频
+  - RULE-SET,Facebook,🦋 Facebook
+  - RULE-SET,GEOSITE-facebook,🦋 Facebook
+  - RULE-SET,Twitter,❌ X
+  - RULE-SET,GEOSITE-x,❌ X
+  - RULE-SET,GEOSITE-twitter,❌ X
+  - RULE-SET,TikTok,🎵 TikTok
+  - RULE-SET,GEOSITE-tiktok,🎵 TikTok
+  - RULE-SET,Instagram,📸 Instagram
+  - RULE-SET,GEOSITE-instagram,📸 Instagram
+  - RULE-SET,Netflix,🎥 奈飞视频
+  - RULE-SET,NetflixIP,🎥 奈飞视频,no-resolve
+  - RULE-SET,GEOIP-netflix,🎥 奈飞视频,no-resolve
+  - RULE-SET,DisneyPlus,🎥 奈飞视频
+  - RULE-SET,HBO,🎥 奈飞视频
+  - RULE-SET,ProxyMedia,🎥 奈飞视频
+  # ---- WhatsApp ----
+  - RULE-SET,Whatsapp,💬 WhatsApp
+  - RULE-SET,GEOSITE-whatsapp,💬 WhatsApp
+  # ---- GitHub ----
+  - RULE-SET,Github,🐱 GitHub
+  # ---- Microsoft ----
+  - RULE-SET,Bing,Ⓜ️ 微软Bing
+  - RULE-SET,GEOSITE-bing,Ⓜ️ 微软Bing
+  - RULE-SET,OneDrive,Ⓜ️ 微软云盘
+  - RULE-SET,GEOSITE-onedrive,Ⓜ️ 微软云盘
+  - RULE-SET,Microsoft,Ⓜ️ 微软服务
+  - RULE-SET,GEOSITE-microsoft,Ⓜ️ 微软服务
+  - RULE-SET,GEOSITE-microsoft-dev,Ⓜ️ 微软服务
+  - RULE-SET,GEOSITE-microsoft-pki,Ⓜ️ 微软服务
+  # ---- 游戏 ----
+  - RULE-SET,SteamCN,DIRECT
+  - RULE-SET,Steam,🎮 游戏平台
+  - RULE-SET,Epic,🎮 游戏平台
+  - RULE-SET,Origin,🎮 游戏平台
+  - RULE-SET,Sony,🎮 游戏平台
+  - RULE-SET,Nintendo,🎮 游戏平台
+  - RULE-SET,Xbox,🎮 游戏平台
+  - RULE-SET,Blizzard,🎮 游戏平台
+  - RULE-SET,GEOSITE-category-games,🎮 游戏平台
+  # ---- 国内服务 ----
+  - RULE-SET,Bilibili,📺 哔哩哔哩
+  - RULE-SET,BilibiliHMT,🎮 游戏平台
+  - RULE-SET,NetEaseMusic,🎶 网易音乐
+  # ---- 爱奇艺港澳台/国外站 ----
+  - RULE-SET,IqiyiHMT,🎥 奈飞视频
+  # ---- 国外穿墙兜底 ----
+  - RULE-SET,ProxyGFWlist,🌏 国外穿墙
+  - RULE-SET,ProxyLite,🌏 国外穿墙
+  - RULE-SET,GEOSITE-geolocation-!cn,🌏 国外穿墙
+  # ---- 国内直连 ----
+  - RULE-SET,GEOSITE-geolocation-cn,DIRECT
+  - RULE-SET,GEOSITE-tld-cn,DIRECT
+  - RULE-SET,ChinaDomain,DIRECT
+  - RULE-SET,CN,DIRECT
+  - RULE-SET,ChinaCompanyIp,DIRECT,no-resolve
+  - RULE-SET,ChinaIp,DIRECT
+  - RULE-SET,ChinaIpV6,DIRECT
+  - RULE-SET,GEOIP-cn,DIRECT
+  - MATCH,🐟 漏网之鱼
