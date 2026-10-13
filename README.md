@@ -17,20 +17,20 @@
 远程引用版(可直接填进 Clash Meta / mihomo 的「配置下载」):
 
 ```
-https://raw.githubusercontent.com/TiaraBasori/karing-clash-meta/main/karing-clash-meta.yaml
+https://raw.githubusercontent.com/TiaraBasori/karing-mihomo-config/main/karing-clash-meta.yaml
 ```
 
 全量内联版(解压后使用;`zstd -d` 解压或用支持 zstd 的解压工具):
 
 ```
-https://raw.githubusercontent.com/TiaraBasori/karing-clash-meta/main/karing-clash-meta-full-inline.yaml.zst
+https://raw.githubusercontent.com/TiaraBasori/karing-mihomo-config/main/karing-clash-meta-full-inline.yaml.zst
 ```
 
 CDN 加速(国内可达,与 raw 内容一致):
 
 ```
-https://fastly.jsdelivr.net/gh/TiaraBasori/karing-clash-meta@main/karing-clash-meta.yaml
-https://fastly.jsdelivr.net/gh/TiaraBasori/karing-clash-meta@main/karing-clash-meta-full-inline.yaml.zst
+https://fastly.jsdelivr.net/gh/TiaraBasori/karing-mihomo-config@main/karing-clash-meta.yaml
+https://fastly.jsdelivr.net/gh/TiaraBasori/karing-mihomo-config@main/karing-clash-meta-full-inline.yaml.zst
 ```
 
 ## 使用
