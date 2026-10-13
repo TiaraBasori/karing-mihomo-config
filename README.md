@@ -24,7 +24,7 @@ https://fastly.jsdelivr.net/gh/TiaraBasori/karing-mihomo-config@main/karing-miho
 
 ## 策略组
 
-### 地区分组(url-test 自动选延迟最低,匹配中英文名/旗帜 emoji)
+### 地区分组(url-test 自动选延迟最低,组内 `filter` 正则匹配中英文名/旗帜 emoji,大小写不敏感、带词边界防误匹配)
 
 `🇭🇰 香港` · `🇹🇼 台湾` · `🇯🇵 日本` · `🇸🇬 新加坡` · `🇺🇸 美国` · `🇷🇺 俄罗斯` · 另有韩国/英国/德国/法国等 17 个国家组 + `🌐 其他地区`(排除上述地区)
 
