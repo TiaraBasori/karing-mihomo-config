@@ -57,238 +57,6 @@ proxy-providers:
       interval: 300
 
 proxy-groups:
-  - name: "🇭🇰 香港"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇭🇰|HK|Hong ?Kong|香港|深港|沪港|京港|港"
-    use:
-      - nodes
-  - name: "🇹🇼 台湾"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇹🇼|TW|Taiwan|新北|彰化|CHT|台湾|臺灣"
-    use:
-      - nodes
-  - name: "🇯🇵 日本"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇯🇵|JP|Japan|东京|大阪|埼玉|日本|川日|东京|大阪|泉日|埼玉"
-    use:
-      - nodes
-  - name: "🇸🇬 新加坡"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇸🇬|SG|Singapore|新加坡|狮城|坡"
-    use:
-      - nodes
-  - name: "🇺🇸 美国"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇺🇸|US|United States|America|美国|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥"
-    use:
-      - nodes
-  - name: "🇷🇺 俄罗斯"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇷🇺|RU|Russia|俄罗斯|莫斯科|圣彼得堡"
-    use:
-      - nodes
-  - name: "🇰🇷 韩国"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇰🇷|韩国"
-    use:
-      - nodes
-  - name: "🇰🇵 朝鲜"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇰🇵|朝鲜"
-    use:
-      - nodes
-  - name: "🇲🇾 马来西亚"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇲🇾|马来西亚"
-    use:
-      - nodes
-  - name: "🇹🇭 泰国"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇹🇭|泰国"
-    use:
-      - nodes
-  - name: "🇻🇳 越南"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇻🇳|越南"
-    use:
-      - nodes
-  - name: "🇵🇭 菲律宾"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇵🇭|菲律宾"
-    use:
-      - nodes
-  - name: "🇮🇩 印度尼西亚"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇮🇩|印度尼西亚"
-    use:
-      - nodes
-  - name: "🇮🇳 印度"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇮🇳|印度"
-    use:
-      - nodes
-  - name: "🇦🇪 阿联酋"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇦🇪|阿联酋"
-    use:
-      - nodes
-  - name: "🇸🇦 沙特阿拉伯"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇸🇦|沙特阿拉伯"
-    use:
-      - nodes
-  - name: "🇹🇷 土耳其"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇹🇷|土耳其"
-    use:
-      - nodes
-  - name: "🇬🇧 英国"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇬🇧|英国"
-    use:
-      - nodes
-  - name: "🇫🇷 法国"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇫🇷|法国"
-    use:
-      - nodes
-  - name: "🇩🇪 德国"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇩🇪|德国"
-    use:
-      - nodes
-  - name: "🇳🇱 荷兰"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇳🇱|荷兰"
-    use:
-      - nodes
-  - name: "🇪🇸 西班牙"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇪🇸|西班牙"
-    use:
-      - nodes
-  - name: "🇮🇹 意大利"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇮🇹|意大利"
-    use:
-      - nodes
-  - name: "🇨🇦 加拿大"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇨🇦|加拿大"
-    use:
-      - nodes
-  - name: "🇧🇷 巴西"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇧🇷|巴西"
-    use:
-      - nodes
-  - name: "🇦🇷 阿根廷"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇦🇷|阿根廷"
-    use:
-      - nodes
-  - name: "🇦🇺 澳大利亚"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇦🇺|澳大利亚"
-    use:
-      - nodes
-  - name: "🇳🇿 新西兰"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    include-filter: "(?i)🇳🇿|新西兰"
-    use:
-      - nodes
-  - name: "🌐 其他地区"
-    type: url-test
-    url: https://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    exclude-filter: "(?i)🇭🇰|🇹🇼|🇯🇵|🇸🇬|🇺🇸|🇷🇺|HK|Hong ?Kong|香港|TW|Taiwan|台湾|臺灣|JP|Japan|日本|东京|大阪|SG|Singapore|新加坡|狮城|US|United States|America|美国|波特兰|达拉斯|硅谷|洛杉矶|圣何塞|西雅图|芝加哥|RU|Russia|俄罗斯|莫斯科"
-    use:
-      - nodes
   - name: "🚀 节点选择"
     type: select
     proxies:
@@ -528,6 +296,238 @@ proxy-groups:
     proxies:
       - "🚀 节点选择"
       - "🎯 全球直连"
+    use:
+      - nodes
+  - name: "🇭🇰 香港"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇭🇰|HK|Hong ?Kong|香港|深港|沪港|京港|港"
+    use:
+      - nodes
+  - name: "🇹🇼 台湾"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇹🇼|TW|Taiwan|新北|彰化|CHT|台湾|臺灣"
+    use:
+      - nodes
+  - name: "🇯🇵 日本"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇯🇵|JP|Japan|东京|大阪|埼玉|日本|川日|东京|大阪|泉日|埼玉"
+    use:
+      - nodes
+  - name: "🇸🇬 新加坡"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇸🇬|SG|Singapore|新加坡|狮城|坡"
+    use:
+      - nodes
+  - name: "🇺🇸 美国"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇺🇸|US|United States|America|美国|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥"
+    use:
+      - nodes
+  - name: "🇷🇺 俄罗斯"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇷🇺|RU|Russia|俄罗斯|莫斯科|圣彼得堡"
+    use:
+      - nodes
+  - name: "🇰🇷 韩国"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇰🇷|韩国"
+    use:
+      - nodes
+  - name: "🇰🇵 朝鲜"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇰🇵|朝鲜"
+    use:
+      - nodes
+  - name: "🇲🇾 马来西亚"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇲🇾|马来西亚"
+    use:
+      - nodes
+  - name: "🇹🇭 泰国"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇹🇭|泰国"
+    use:
+      - nodes
+  - name: "🇻🇳 越南"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇻🇳|越南"
+    use:
+      - nodes
+  - name: "🇵🇭 菲律宾"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇵🇭|菲律宾"
+    use:
+      - nodes
+  - name: "🇮🇩 印度尼西亚"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇮🇩|印度尼西亚"
+    use:
+      - nodes
+  - name: "🇮🇳 印度"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇮🇳|印度"
+    use:
+      - nodes
+  - name: "🇦🇪 阿联酋"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇦🇪|阿联酋"
+    use:
+      - nodes
+  - name: "🇸🇦 沙特阿拉伯"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇸🇦|沙特阿拉伯"
+    use:
+      - nodes
+  - name: "🇹🇷 土耳其"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇹🇷|土耳其"
+    use:
+      - nodes
+  - name: "🇬🇧 英国"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇬🇧|英国"
+    use:
+      - nodes
+  - name: "🇫🇷 法国"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇫🇷|法国"
+    use:
+      - nodes
+  - name: "🇩🇪 德国"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇩🇪|德国"
+    use:
+      - nodes
+  - name: "🇳🇱 荷兰"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇳🇱|荷兰"
+    use:
+      - nodes
+  - name: "🇪🇸 西班牙"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇪🇸|西班牙"
+    use:
+      - nodes
+  - name: "🇮🇹 意大利"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇮🇹|意大利"
+    use:
+      - nodes
+  - name: "🇨🇦 加拿大"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇨🇦|加拿大"
+    use:
+      - nodes
+  - name: "🇧🇷 巴西"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇧🇷|巴西"
+    use:
+      - nodes
+  - name: "🇦🇷 阿根廷"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇦🇷|阿根廷"
+    use:
+      - nodes
+  - name: "🇦🇺 澳大利亚"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇦🇺|澳大利亚"
+    use:
+      - nodes
+  - name: "🇳🇿 新西兰"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    include-filter: "(?i)🇳🇿|新西兰"
+    use:
+      - nodes
+  - name: "🌐 其他地区"
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    exclude-filter: "(?i)🇭🇰|🇹🇼|🇯🇵|🇸🇬|🇺🇸|🇷🇺|HK|Hong ?Kong|香港|TW|Taiwan|台湾|臺灣|JP|Japan|日本|东京|大阪|SG|Singapore|新加坡|狮城|US|United States|America|美国|波特兰|达拉斯|硅谷|洛杉矶|圣何塞|西雅图|芝加哥|RU|Russia|俄罗斯|莫斯科"
     use:
       - nodes
 
