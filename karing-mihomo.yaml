@@ -303,7 +303,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇭🇰|HK|Hong ?Kong|香港|深港|沪港|京港|港"
+    filter: "(?i)(🇭🇰|\bHK\b|Hong ?Kong|香港|深港|沪港|京港)"
     use:
       - nodes
   - name: "🇹🇼 台湾"
@@ -311,7 +311,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇹🇼|TW|Taiwan|新北|彰化|CHT|台湾|臺灣"
+    filter: "(?i)(🇹🇼|\bTW\b|Taiwan|新北|彰化|CHT|台湾|臺灣)"
     use:
       - nodes
   - name: "🇯🇵 日本"
@@ -319,7 +319,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇯🇵|JP|Japan|东京|大阪|埼玉|日本|川日|东京|大阪|泉日|埼玉"
+    filter: "(?i)(🇯🇵|\bJP\b|Japan|东京|大阪|埼玉|日本|川日|泉日)"
     use:
       - nodes
   - name: "🇸🇬 新加坡"
@@ -327,7 +327,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇸🇬|SG|Singapore|新加坡|狮城|坡"
+    filter: "(?i)(🇸🇬|\bSG\b|Singapore|新加坡|狮城)"
     use:
       - nodes
   - name: "🇺🇸 美国"
@@ -335,7 +335,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇺🇸|US|United States|America|美国|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥"
+    filter: "(?i)(🇺🇸|\bUS\b|United ?States|America|美国|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥)"
     use:
       - nodes
   - name: "🇷🇺 俄罗斯"
@@ -343,7 +343,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇷🇺|RU|Russia|俄罗斯|莫斯科|圣彼得堡"
+    filter: "(?i)(🇷🇺|\bRU\b|Russia|俄罗斯|莫斯科|圣彼得堡)"
     use:
       - nodes
   - name: "🇰🇷 韩国"
@@ -351,7 +351,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇰🇷|韩国"
+    filter: "(?i)(🇰🇷|\bKR\b|Korea|韩国|首尔)"
     use:
       - nodes
   - name: "🇰🇵 朝鲜"
@@ -359,7 +359,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇰🇵|朝鲜"
+    filter: "(?i)(🇰🇵|\bKP\b|North ?Korea|朝鲜)"
     use:
       - nodes
   - name: "🇲🇾 马来西亚"
@@ -367,7 +367,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇲🇾|马来西亚"
+    filter: "(?i)(🇲🇾|\bMY\b|Malaysia|马来西亚|吉隆坡)"
     use:
       - nodes
   - name: "🇹🇭 泰国"
@@ -375,7 +375,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇹🇭|泰国"
+    filter: "(?i)(🇹🇭|\bTH\b|Thailand|泰国|曼谷)"
     use:
       - nodes
   - name: "🇻🇳 越南"
@@ -383,7 +383,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇻🇳|越南"
+    filter: "(?i)(🇻🇳|\bVN\b|Vietnam|越南)"
     use:
       - nodes
   - name: "🇵🇭 菲律宾"
@@ -391,7 +391,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇵🇭|菲律宾"
+    filter: "(?i)(🇵🇭|\bPH\b|Philippines|菲律宾)"
     use:
       - nodes
   - name: "🇮🇩 印度尼西亚"
@@ -399,7 +399,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇮🇩|印度尼西亚"
+    filter: "(?i)(🇮🇩|\bID\b|Indonesia|印尼|印度尼西亚|雅加达)"
     use:
       - nodes
   - name: "🇮🇳 印度"
@@ -407,7 +407,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇮🇳|印度"
+    filter: "(?i)(🇮🇳|\bIN\b|India|印度|孟买)"
     use:
       - nodes
   - name: "🇦🇪 阿联酋"
@@ -415,7 +415,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇦🇪|阿联酋"
+    filter: "(?i)(🇦🇪|\bAE\b|UAE|阿联酋|迪拜)"
     use:
       - nodes
   - name: "🇸🇦 沙特阿拉伯"
@@ -423,7 +423,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇸🇦|沙特阿拉伯"
+    filter: "(?i)(🇸🇦|\bSA\b|Saudi|沙特)"
     use:
       - nodes
   - name: "🇹🇷 土耳其"
@@ -431,7 +431,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇹🇷|土耳其"
+    filter: "(?i)(🇹🇷|\bTR\b|Turkey|土耳其|伊斯坦布尔)"
     use:
       - nodes
   - name: "🇬🇧 英国"
@@ -439,7 +439,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇬🇧|英国"
+    filter: "(?i)(🇬🇧|\bUK\b|\bGB\b|Britain|England|英国|伦敦)"
     use:
       - nodes
   - name: "🇫🇷 法国"
@@ -447,7 +447,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇫🇷|法国"
+    filter: "(?i)(🇫🇷|\bFR\b|France|法国|巴黎)"
     use:
       - nodes
   - name: "🇩🇪 德国"
@@ -455,7 +455,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇩🇪|德国"
+    filter: "(?i)(🇩🇪|\bDE\b|Germany|德国|法兰克福)"
     use:
       - nodes
   - name: "🇳🇱 荷兰"
@@ -463,7 +463,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇳🇱|荷兰"
+    filter: "(?i)(🇳🇱|\bNL\b|Netherlands|荷兰|阿姆斯特丹)"
     use:
       - nodes
   - name: "🇪🇸 西班牙"
@@ -471,7 +471,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇪🇸|西班牙"
+    filter: "(?i)(🇪🇸|\bES\b|Spain|西班牙)"
     use:
       - nodes
   - name: "🇮🇹 意大利"
@@ -479,7 +479,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇮🇹|意大利"
+    filter: "(?i)(🇮🇹|\bIT\b|Italy|意大利)"
     use:
       - nodes
   - name: "🇨🇦 加拿大"
@@ -487,7 +487,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇨🇦|加拿大"
+    filter: "(?i)(🇨🇦|\bCA\b|Canada|加拿大)"
     use:
       - nodes
   - name: "🇧🇷 巴西"
@@ -495,7 +495,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇧🇷|巴西"
+    filter: "(?i)(🇧🇷|\bBR\b|Brazil|巴西)"
     use:
       - nodes
   - name: "🇦🇷 阿根廷"
@@ -503,7 +503,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇦🇷|阿根廷"
+    filter: "(?i)(🇦🇷|\bAR\b|Argentina|阿根廷)"
     use:
       - nodes
   - name: "🇦🇺 澳大利亚"
@@ -511,7 +511,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇦🇺|澳大利亚"
+    filter: "(?i)(🇦🇺|\bAU\b|Australia|澳大利亚|悉尼|墨尔本)"
     use:
       - nodes
   - name: "🇳🇿 新西兰"
@@ -519,7 +519,7 @@ proxy-groups:
     url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
-    include-filter: "(?i)🇳🇿|新西兰"
+    filter: "(?i)(🇳🇿|\bNZ\b|New ?Zealand|新西兰)"
     use:
       - nodes
   - name: "🌐 其他地区"
